@@ -258,3 +258,20 @@ a {
   font-size: 12px;
 }
 
+
+/** User Dashboard **/
+.user-dashboard {
+  --spacing: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  display: grid;
+  height: 100vh;
+  grid-template-rows:1fr;
+  grid-template-columns: 250px 1fr;
+  grid-template-areas: "nav    main" "footer footer";
+}
+.user__nav {
+  flex: 0 0 250px;
+  grid-area: nav;
+  background-color: #540101;
+}

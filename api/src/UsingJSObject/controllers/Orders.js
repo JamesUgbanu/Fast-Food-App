@@ -14,6 +14,14 @@ const Order = {
     const orders = OrderModel.findAll();
     return res.status(200).send({'message':orders});
   },
+
+  getOrderById(req, res) {
+    const order = OrderModel.findOne(req.params.id);
+    if (!order) {
+      return res.status(404).send({'error': 'order not found'});
+    }
+    return res.status(200).send({'message': order});
+  }
 }
 
 export default Order;

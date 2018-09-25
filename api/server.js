@@ -13,6 +13,7 @@ app.use(express.json())
 
 app.post('/api/v1/orders', order.createOrder);
 app.get('/api/v1/orders', order.getAllOrder);
+app.get('/api/v1/orders/:id', order.getOrderById);
 
 
 app.get('/', (req, res) => {

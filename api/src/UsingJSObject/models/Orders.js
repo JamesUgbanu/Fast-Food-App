@@ -26,6 +26,8 @@ class Order {
     return this.orders;
   }
 
-  
+  findOne(id) {
+    return this.orders.find(order => order.id === parseInt(id));
+  }
 }
 export default new Order();

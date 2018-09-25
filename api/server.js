@@ -7,10 +7,12 @@ import bodyParser from "body-parser";
 app.use(bodyParser.urlencoded({extended: true}));
 import OrderWithJsObject from './src/usingJSObject/controllers/Orders';
 
+const order = process.env.TYPE === 'db' ? OrderWithDB : OrderWithJsObject;
 
 app.use(express.json())
 
-app.post('/api/v1/orders', OrderWithJsObject.createOrder);
+app.post('/api/v1/orders', order.createOrder);
+app.get('/api/v1/orders', order.getAllOrder);
 
 
 app.get('/', (req, res) => {

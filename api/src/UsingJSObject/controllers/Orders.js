@@ -8,7 +8,12 @@ const Order = {
     }
     const order = OrderModel.create(req.body);
     return res.status(201).send({'success': 'Order Sucessfully Created', 'message':order});
-  }
+  },
+
+  getAllOrder(req, res) {
+    const orders = OrderModel.findAll();
+    return res.status(200).send({'message':orders});
+  },
 }
 
 export default Order;

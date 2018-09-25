@@ -19,7 +19,11 @@ class Order {
       modifiedDate: moment.now()
     };
     this.orders.push(newOrder);
-    return newOrder
+    return newOrder;
+  }
+
+  findAll() {
+    return this.orders;
   }
 
   

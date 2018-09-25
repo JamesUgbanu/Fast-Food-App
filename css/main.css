@@ -37,3 +37,135 @@ a {
   grid-area: header-left;
   margin-left: 5%;
 }
+
+
+
+/* content / main settings */
+
+.content-grid {
+  display: grid;
+  color: #152228;
+  background-image: url('../images/banner.jpg');
+  background-position: center;
+  background-color: #f7fcff;
+}
+
+.content {
+  grid-area: main;
+}
+
+.grid-navigation {
+  margin-top: 25px;
+}
+.grid-navigation ul {
+  list-style-type: none;
+}
+
+.grid-navigation li {
+  display: inline;
+  padding-right: 0.5em;
+}
+
+
+.hero {
+  grid-area: hero;
+  padding: 0;
+}
+
+/* footer settings */
+
+.footer{
+  margin: 0;
+  padding: 10px;
+  background-color: #000;
+  color: #fff;
+}
+
+/* settings for small screens like Smartphones */
+
+@media (min-width: 120px) and (max-width: 767px) {
+  .header-grid {
+    grid-template-columns: 45% 55%;
+    grid-template-areas: "header-mobile header-center";
+    position: fixed;
+    background-color: white;
+    width: 100%
+  }
+  .header-left {
+    display: none;
+  }
+  .header-right {
+    display: none;
+  }
+  .content-grid {
+    grid-template-columns: auto;
+    grid-template-areas: "hero";
+    padding-top: 3em;
+  }
+  .content-grid>div {
+    padding: 2em;
+  }
+ 
+  .info {
+  position: relative;
+  top: 100px;
+  left: 25%;
+  width: 50%;
+  height: 20px;
+  background-color: rgba(84,1,1, 0.8);
+  }
+
+}
+
+/* medium sized screens like tablets or netbooks */
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .header-grid {
+    grid-template-columns: 60% 20% 20%;
+    grid-template-areas: "header-left header-center header-right";
+  }
+  .header-grid>div {
+    padding: 1em;
+  }
+  .header-mobile {
+    display: none;
+  }
+  .content-grid {
+    grid-template-columns: auto;
+    grid-template-columns: 33% auto;
+    grid-template-areas: "hero hero";
+  }
+  .content-grid>div {
+    padding: 2em;
+  }
+}
+
+/* Large Screens */
+
+@media (min-width: 1025px) {
+  .header-grid {
+    justify-content: space-between;
+    grid-template-columns: 70% 15% 15%;
+    grid-template-rows: auto;
+    grid-template-areas: "header-left header-center header-right";
+  }
+  .header-mobile {
+    display: none;
+  }
+  .content-grid {
+    grid-template-columns: 20% 5% 65% auto;
+    height: 520px;
+    grid-template-areas: "hero hero hero hero";
+  }
+  .content-grid>div {
+    padding: 1em;
+  }
+  .info {
+  position: relative;
+  top: 100px;
+  left: 25%;
+  width: 50%;
+  height: 220px;
+  background-color: rgba(84,1,1, 0.8);
+  }
+}

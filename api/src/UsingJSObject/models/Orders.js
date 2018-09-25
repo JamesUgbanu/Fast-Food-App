@@ -29,5 +29,16 @@ class Order {
   findOne(id) {
     return this.orders.find(order => order.id === parseInt(id));
   }
+
+  update(id, data) {
+    const order = this.findOne(id);
+    const index = this.orders.indexOf(order);
+    this.orders[index].item_id = data['item_id'] || order.item_id;
+    this.orders[index].user_id = data['user_id'] || order.user_id;
+    this.orders[index].order_id = data['order_id'] || order.order_id;
+    this.orders[index].order_status = data['order_status'] || order.order_status;
+    this.orders[index].modifiedDate = moment.now()
+    return this.orders[index];
+  }
 }
 export default new Order();

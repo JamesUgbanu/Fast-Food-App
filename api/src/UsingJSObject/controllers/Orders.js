@@ -30,6 +30,15 @@ const Order = {
     }
     const updatedOrder = OrderModel.update(req.params.id, req.body)
     return res.status(200).send({'success': 'Order Updated Successfully'});
+  },
+
+  deleteOrder(req, res) {
+    const order = OrderModel.findOne(req.params.id);
+    if (!order) {
+      return res.status(404).send({'message': 'order not found'});
+    }
+    const ref = OrderModel.delete(req.params.id);
+    return res.status(200).send({'success': 'Order Successfully Deleted'});
   }
 }
 

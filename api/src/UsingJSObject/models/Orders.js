@@ -40,5 +40,12 @@ class Order {
     this.orders[index].modifiedDate = moment.now()
     return this.orders[index];
   }
+
+  delete(id) {
+    const order = this.findOne(id);
+    const index = this.orders.indexOf(order);
+    this.orders.splice(index, 1);
+    return {};
+  }
 }
 export default new Order();

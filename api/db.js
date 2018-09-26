@@ -28,13 +28,14 @@ const createOrderTable = () => {
 }
 
 const createOrderItemTable = () => {
+  
   const queryText =
     `CREATE TABLE IF NOT EXISTS
       orderItem(
         id SERIAL PRIMARY KEY,
         item_id integer NOT NULL,
         order_id integer NOT NULL,
-        order_status integer NOT NULL,
+        order_status integer DEFAULT 1,
         FOREIGN KEY (item_id) REFERENCES items (id)  ON DELETE NO ACTION,
         FOREIGN KEY (order_id) REFERENCES orders (id)  ON DELETE NO ACTION,
         FOREIGN KEY (order_status) REFERENCES order_status (id) ON DELETE NO ACTION
@@ -78,6 +79,7 @@ const createUserTable = () => {
         id SERIAL PRIMARY KEY,
         email VARCHAR(128) UNIQUE NOT NULL,
         password VARCHAR(128) NOT NULL,
+        isAdmin BOOLEAN DEFAULT false,
         created_date TIMESTAMP,
         modified_date TIMESTAMP
       )`;

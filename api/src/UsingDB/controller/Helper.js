@@ -16,9 +16,10 @@ const Helper = {
     return /\S+@\S+\.\S+/.test(email);
   },
 
-  generateToken(id) {
+  generateToken(id, admin) {
     const token = jwt.sign({
-      userId: id
+      userId: id,
+      isAdmin: admin
     },
       process.env.SECRET, { expiresIn: '7d' }
     );

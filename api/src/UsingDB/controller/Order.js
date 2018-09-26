@@ -38,24 +38,52 @@ const Order = {
   },
 
    async getUserOrder(req, res) {
-    const findAllQuery = 'SELECT * FROM orders where user_id = $1';
+    const findOneQuery = `SELECT * FROM orders where user_id = $1`;
     try {
-      const rows = await db.query(findAllQuery, [req.user.id]);
-      return res.status(200).send({'message': rows});
+      const rows = await db.query(findOneQuery, [req.user.id]);
+      return res.status(200).send({message: rows});
     } catch(error) {
-      return res.status(400).send(error);
+      return res.status(400).send({error: 'Query Failed'});
     }
   },
 
    async getAllOrder(req, res) {
-    const findAllQuery = 'SELECT * FROM orders';
+    const findAllQuery = `SELECT * FROM orders`;
+
     try {
-      const { rows, rowCount } = await db.query(findAllQuery, [req.user.id]);
-      return res.status(200).send({ rows, rowCount });
-    } catch(error) {
-      return res.status(400).send(error);
+      if(req.user.admin) {
+      const rows = await db.query(findAllQuery);
+      return res.status(200).send({ sucess: 'Success', message: rows });
+    } else {
+      res.status(401).send({error: 'Unauthorised Access' })
+    }
+  } catch(error) {
+      return res.status(400).send({error: 'Query Failed'});
     }
   },
+
+  async updateOrderStatus(req, res) {
+    const findOneQuery = `UPDATE orderitem SET order_status = $1 WHERE order_id = $2 AND item_id = $3 returning *`;
+   
+    try {
+      if(req.user.admin) {
+       
+        if (!req.body.item_id || !req.body.order_status) {
+            return res.status(400).send({error: 'All fields are required'});
+          }
+
+      const rows = await db.query(findOneQuery, [req.body.order_status, parseInt(req.params.id), req.body.item_id]);
+        if(rows.length == 0) {
+          return res.status(301).send({error: 'Not Found'});
+        }
+      return res.status(200).send({ sucess: 'Success', message: rows });
+    } else {
+      res.status(401).send({error: 'Unauthorised Access' })
+    }
+  } catch(error) {
+      return res.status(400).send({error: 'Query Failed'});
+    }
+  }
 
  
 }

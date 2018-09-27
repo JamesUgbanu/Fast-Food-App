@@ -5,7 +5,7 @@ import 'babel-polyfill';
 const app = express()
 import bodyParser from "body-parser";
 app.use(bodyParser.urlencoded({extended: true}));
-import OrderWithJsObject from './src/usingJSObject/controllers/Orders';
+//import OrderWithJsObject from './src/usingJSObject/controllers/Orders';
 import OrderWithDB from './src/usingDB/controller/Order';
 import UserWithDb from './src/usingDB/controller/Users';
 import ItemWithDb from './src/usingDB/controller/Item';

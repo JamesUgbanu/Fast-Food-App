@@ -52,11 +52,10 @@ const Order = {
 
     try {
       if(req.user.admin) {
+        return res.status(401).send({error: 'Unauthorised Access' });
+      }
       const rows = await db.query(findAllQuery);
       return res.status(200).send({ sucess: 'Success', message: rows });
-    } else {
-      res.status(401).send({error: 'Unauthorised Access' })
-    }
   } catch(error) {
       return res.status(400).send({error: 'Query Failed'});
     }
@@ -67,6 +66,8 @@ const Order = {
    
     try {
       if(req.user.admin) {
+        return res.status(401).send({error: 'Unauthorised Access' })
+      }
        
         if (!req.body.item_id || !req.body.order_status) {
             return res.status(400).send({error: 'All fields are required'});
@@ -77,9 +78,6 @@ const Order = {
           return res.status(301).send({error: 'Not Found'});
         }
       return res.status(200).send({ sucess: 'Success', message: rows });
-    } else {
-      res.status(401).send({error: 'Unauthorised Access' })
-    }
   } catch(error) {
       return res.status(400).send({error: 'Query Failed'});
     }

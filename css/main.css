@@ -1,0 +1,39 @@
+html {
+  font-family: 'Spectral SC', serif;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #232323;
+  transition: color 0.3s ease;
+}
+
+.responsive {
+  max-width: 100%;
+}
+
+/* header settings and navigation */
+
+.header-grid {
+  display: grid;
+  background-color: #AD0909;
+  color: #fff;
+}
+.header-grid a {
+  color: #fff;
+  font-size: 18px;
+}
+
+.header-center {
+  grid-area: header-center;
+}
+
+.header-mobile {
+  grid-area: header-mobile;
+}
+
+.header-left {
+  grid-area: header-left;
+  margin-left: 5%;
+}

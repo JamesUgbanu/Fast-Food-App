@@ -29,8 +29,8 @@ app.get('/api/v1/order', Auth.verifyToken, order.getAllOrder);
 app.put('/api/v1/order/:id', Auth.verifyToken, order.updateOrderStatus);
 app.post('/api/v1/item', Auth.verifyToken, ItemWithDb.addItem);
 app.get('/api/v1/item/:id', Auth.verifyToken, ItemWithDb.getItemById);
-app.get('/api/v1/item', Auth.verifyToken, ItemWithDb.getAllItem);
-app.put('/api/v1/item/:id', Auth.verifyToken, ItemWithDb.updateItemById);
+app.get('/api/v1/item', ItemWithDb.getAllItem);
+app.put('/api/v1/item/:id', ItemWithDb.updateItemById);
 
 
 app.get('/', (req, res) => {

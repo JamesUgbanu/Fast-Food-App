@@ -29,9 +29,6 @@ const Order = {
    async getItemById(req, res) {
     const findOneQuery = `SELECT * FROM items where id = $1`;
     try {
-    	if(!req.user.admin) {
-    		return res.status(401).send({error: 'Unauthorised Access' })
-    	}
       const rows = await db.query(findOneQuery, [parseInt(req.params.id)]);
       return res.status(200).send({success: 'Success', message: rows[0]});
   		
@@ -44,9 +41,7 @@ const Order = {
     const findAllQuery = `SELECT * FROM items`;
 
     try {
-      if(!req.user.admin) {
-      	return res.status(401).send({error: 'Unauthorised Access' })
-    	}
+    
       const rows = await db.query(findAllQuery);
       return res.status(200).send({ sucess: 'Success', message: rows });
  

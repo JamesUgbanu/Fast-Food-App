@@ -4,6 +4,7 @@
   "description": "Fast Food Fast is a delivery service app for a restaurant",
   "main": "server.js",
   "scripts": {
+    "prestart": "next build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel db.js --out-dir build",
     "start": "babel-watch server.js"

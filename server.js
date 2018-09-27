@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 import OrderWithDB from './src/UsingDB/controller/Order';
 import UserWithDb from './src/UsingDB/controller/Users';
 import ItemWithDb from './src/UsingDB/controller/Item';
-import Auth from './src/usingDB/middleware/Auth';
+import Auth from './src/UsingDB/middleware/Auth';
 
 const order = process.env.TYPE === 'db' ? OrderWithDB : OrderWithJsObject;
 

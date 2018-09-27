@@ -38,5 +38,5 @@ app.get('/', (req, res) => {
 });
 
 
-app.listen(3000)
-console.log('app running on port ', 3000);
+app.listen(process.env.PORT || 5000)
+console.log('app running on port ', 5000);

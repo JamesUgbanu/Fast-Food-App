@@ -1,3 +1,4 @@
+<<<<<<< update-readme
 BUILD A FULLSTACK FINISHED PRODUCT: Fast-Food-Fast
 Project Overview
 Fast-Food-Fast is a food delivery service app for a restaurant. The project is built with html and css with no external library. The ui template of the restaurant can be found at the link and the api at the link. However, the develop is the most up-to-date with new features.
@@ -32,3 +33,6 @@ run the cmd : npm install
 run the command npm run start - to start the app
 npm run test - to test api implementation
 npm run cover -to test coverall output
+=======
+#  GitHub Pages README file
+>>>>>>> gh-pages

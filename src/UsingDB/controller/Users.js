@@ -5,9 +5,11 @@ import Helper from './Helper';
 const User = {
 
   async createUser(req, res) {
+
     if (!req.body.email || !req.body.password) {
       return res.status(400).send({error: 'Some values are missing'});
     }
+
     if (!Helper.isValidEmail(req.body.email)) {
       return res.status(400).send({ error: 'Please enter a valid email address' });
     }

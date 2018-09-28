@@ -1,10 +1,13 @@
+
+[![Build Status](https://travis-ci.org/techneplus/Fast-Food-App.svg?branch=master)](https://travis-ci.org/techneplus/Fast-Food-App)
+
+
+
 # BUILD A FULLSTACK FINISHED PRODUCT: 
 
 Fast-Food-Fast Project Overview Fast-Food-Fast is a food delivery service app for a restaurant. The project is built with html and css with no external library. The ui template of the restaurant can be found at the link and the api at the link. However, the develop is the most up-to-date with new features.
 
 ## Features (UI) 
-
-[![Build Status](https://travis-ci.org/techneplus/Fast-Food-App.svg?branch=master)](https://travis-ci.org/techneplus/Fast-Food-App)
 
 User can create an account User can login to their account User can order for food User can see a history of ordered food Admin can manage order Admin can manage food menu.
 

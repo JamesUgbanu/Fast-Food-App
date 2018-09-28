@@ -5,6 +5,7 @@ import Helper from './Helper';
 const User = {
 
   async createUser(req, res) {
+    console.log(req.body)
 
     if (!req.body.email || !req.body.password) {
       return res.status(400).send({error: 'Some values are missing'});

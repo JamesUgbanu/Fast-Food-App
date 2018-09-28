@@ -78,6 +78,7 @@ const createUserTable = () => {
         id SERIAL PRIMARY KEY,
         email VARCHAR(128) UNIQUE NOT NULL,
         password VARCHAR(128) NOT NULL,
+        isadmin BOOLEAN DEFAULT false,
         created_date TIMESTAMP,
         modified_date TIMESTAMP
       )`;
@@ -133,10 +134,10 @@ const dropUserTable = () => {
 
 
 const createAllTables = () => {
-  createOrderTable();
-  createStatusTable();
+  createItemTable();
   createUserTable();
   createOrderTable();
+  createStatusTable();
   createOrderItemTable();
 }
 

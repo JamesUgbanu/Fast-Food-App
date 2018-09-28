@@ -1,5 +1,5 @@
 
-[![Build Status](https://travis-ci.org/techneplus/Fast-Food-App.svg?branch=master)](https://travis-ci.org/techneplus/Fast-Food-App)
+[![Build Status](https://travis-ci.org/techneplus/Fast-Food-App.svg?branch=master)](https://travis-ci.org/techneplus/Fast-Food-App) [![Coverage Status](https://coveralls.io/repos/github/techneplus/Fast-Food-App/badge.svg?branch=gh-pages)](https://coveralls.io/github/techneplus/Fast-Food-App?branch=gh-pages)
 
 
 

@@ -51,9 +51,9 @@ const Order = {
     const findAllQuery = `SELECT * FROM orders`;
 
     try {
-      if(req.user.admin) {
-        return res.status(401).send({error: 'Unauthorised Access' });
-      }
+      // if(req.user.admin) {
+      //   return res.status(401).send({error: 'Unauthorised Access' });
+      // }
       const rows = await db.query(findAllQuery);
       return res.status(200).send({ sucess: 'Success', message: rows });
   } catch(error) {

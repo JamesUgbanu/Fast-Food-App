@@ -4,7 +4,7 @@ import db from '../db';
 const Order = {
 
   async addItem(req, res) {
-
+      
     const createQuery = `INSERT INTO
       items(name, description, price, created_date, modified_date)
       VALUES($1, $2, $3, $4, $5)
@@ -19,7 +19,7 @@ const Order = {
        
     try {
       const rows = await db.query(createQuery, values);
-
+      
       return res.status(201).send({success: 'Item Added Sucessfully', message: rows[0]});
     } catch(error) {
       return res.status(400).send(error);

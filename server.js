@@ -22,21 +22,21 @@ app.use(express.json())
 // app.delete('/api/v1/orders/:id', order.deleteOrder);
 app.post('/api/v1/user/register', UserWithDb.createUser);
 app.post('/api/v1/user/authenticate', UserWithDb.authenticateUser);
-app.delete('/api/v1/user/me', Auth.verifyToken, UserWithDb.delete);
+app.delete('/api/v1/user/:id', Auth.verifyToken, UserWithDb.delete);
 app.post('/api/v1/user/order', Auth.verifyToken, order.createOrder);
 app.get('/api/v1/user/order', Auth.verifyToken, order.getUserOrder);
 app.get('/api/v1/order', Auth.verifyToken, order.getAllOrder);
 app.put('/api/v1/order/:id', Auth.verifyToken, order.updateOrderStatus);
 app.post('/api/v1/item', Auth.verifyToken, ItemWithDb.addItem);
-app.get('/api/v1/item/:id', Auth.verifyToken, ItemWithDb.getItemById);
+app.get('/api/v1/item/:id', ItemWithDb.getItemById);
 app.get('/api/v1/item', ItemWithDb.getAllItem);
-app.put('/api/v1/item/:id', ItemWithDb.updateItemById);
+app.put('/api/v1/item/:id', Auth.verifyToken, ItemWithDb.updateItemById);
 
 
 app.get('/', (req, res) => {
-  return res.status(200).send({'message': 'Wow! Nice! Your first working endpoint'});
+  res.status(200).send('Hello World');
 });
 
 
-app.listen(process.env.PORT || 8080)
-console.log('app running on port ', 8080);
+app.listen(process.env.PORT || 5000)
+console.log('app running on port ', 5000);

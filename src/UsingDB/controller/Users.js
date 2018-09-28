@@ -69,14 +69,13 @@ const User = {
     const deleteQuery = 'DELETE FROM users WHERE id=$1 returning *';
     try {
     	if(req.user.admin) {
-    		const rows = await db.query(deleteQuery, [req.user.id]);
+        return res.status(401).send({error: 'Unauthorised Access' })
+      }
+    		const rows = await db.query(deleteQuery, [parseInt(req.params.id)]);
       if(!rows[0]) {
         return res.status(404).send({success: 'user not found'});
       }
       return res.status(200).send({ success: 'User Successfully deleted' });
-  } else {
-  		res.status(401).send({error: 'Unauthorised Access' })
-  	}
       
     } catch(error) {
       return res.status(400).send(error);

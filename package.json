@@ -4,8 +4,8 @@
   "description": "Fast Food Fast is a delivery service app for a restaurant",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel db.js --out-dir build",
+    "test": "mocha",
+    "build": "babel server.js --out-dir build",
     "start": "babel-watch server.js"
   },
   "repository": {
@@ -36,5 +36,13 @@
     "make-runnable": "^1.3.6",
     "moment": "^2.22.2",
     "pg-promise": "^8.4.6"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0",
+    "supertest": "^3.3.0"
   }
 }

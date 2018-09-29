@@ -8,7 +8,8 @@ const api = supertest('http://127.0.0.1:3000');
 it('should return a 200 response', function(done) {
 	api.get('/')
 	.set('Accept', 'application/json')
-	.expect(200, done);
+	.expect(200);
+	done()
 })
 
 // it('should return a 200 response', function(done) {

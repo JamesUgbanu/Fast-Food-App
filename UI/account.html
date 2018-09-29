@@ -6,7 +6,7 @@
   <title>ACCOUNT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Spectral+SC" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
    <link rel="stylesheet" href="css/navigation.css">
   <link rel="stylesheet" href="css/main.css">
 </head>
@@ -58,29 +58,17 @@
         <a class="menu__link" href="#">Dashboard</a>
       </li>
       <li class="menu__item">
-        <a class="menu__link" href="#">Orders</a>
-         <ul class="menu sub-menu">
-          <li><a class="menu__link" href="admin-order.html">New Order</a></li>
-          <li><a class="menu__link" href="#">Order History</a>
-            <ul class="menu sub-menu-sub">
-                <li><a class="menu__link" href="order.html">Completed Order</a></li>
-                <li><a class="menu__link" href="#">Processing Order</a></li>
-                <li><a class="menu__link" href="#">Declined Order</a></li>
+        <a class="menu__link" href="#">Orders<i style="float: right;" class="fa fa-sort-down" aria-hidden="true"></i></a>
+            <ul class="menu sub-menu">
+              <li><a class="menu__link" href="processing-order.html">Processing Order</a></li>
+                <li><a class="menu__link" href="completed-order.html">Completed Order</a></li>
+                <li><a class="menu__link" href="declined-order.html">Declined Order</a></li>
               </ul>
-          </li>
-        </ul>
-      </li>
-      <li class="menu__item">
-        <a class="menu__link" href="#">Items</a>
-         <ul class="menu sub-menu">
-          <li><a class="menu__link" href="#">Add New Item</a></li>
-          <li><a class="menu__link" href="#">All Item</a></li>
-        </ul>
       </li>
     </ul>
   </nav>
   <main class="admin__main">
-    <h2>Dashboard</h2>
+    <h2>User Dashboard</h2>
     <div class="dashboard">
       <div class="dashboard__item">
         <div class="card">
@@ -96,7 +84,7 @@
   </main>
 </div>
     <div class="footer">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <p>2018</p>
     </div>
 </body>
 

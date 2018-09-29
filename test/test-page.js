@@ -6,10 +6,16 @@ const app = require('../server');
 const api = supertest('http://127.0.0.1:5000');
 
 it('should return a 200 response', function(done) {
-	api.get('/api/v1/item')
+	api.get('/')
 	.set('Accept', 'application/json')
 	.expect(200, done);
 })
+
+// it('should return a 200 response', function(done) {
+// 	api.get('/api/v1/item')
+// 	.set('Accept', 'application/json')
+// 	.expect(200, done);
+// })
 
 // it('should be an object with keys and values', function(done) {
 // 	api.get('/api/v1/item/1')

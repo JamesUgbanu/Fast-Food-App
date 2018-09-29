@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>ACCOUNT</title>
+  <title>ADMIN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Spectral+SC" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
@@ -14,7 +14,7 @@
 <body>
   <div class="header-grid">
     <div class="header-left">
-       <h2>Fast Food Fast</h2>
+       <h2>ADMIN DASHBOARD</h2>
     </div>
     <div class="header-center">
       <ul class="grid-navigation">
@@ -55,20 +55,20 @@
 <nav class="user__nav">
    <ul class="menu">
       <li class="menu__item">
-        <a class="menu__link" href="#">Dashboard</a>
+        <a class="menu__link" href="admin-dashboard.html">Dashboard</a>
       </li>
       <li class="menu__item">
-        <a class="menu__link" href="#">Orders</a>
+        <a class="menu__link" href="#">Orders<i style="float: right;" class="fa fa-sort-down" aria-hidden="true"></i></a>
          <ul class="menu sub-menu">
-          <li><a class="menu__link" href="admin-order.html">New Order<i style="float: right;" class="fa fa-plus" aria-hidden="true"></i></a></li>
-          <li><a class="menu__link" href="#">Order History</a>
+          <li><a class="menu__link" href="admin-new-order.html">New Order</a></li>
+          <li><a class="menu__link" href="admin-order-history.html">Order History</a>
           </li>
         </ul>
       </li>
       <li class="menu__item">
         <a class="menu__link" href="#">Items<i style="float: right;" class="fa fa-sort-down" aria-hidden="true"></i></a>
          <ul class="menu sub-menu">
-          <li><a class="menu__link" href="#">Add New Item<i style="float: right;" class="fa fa-plus" aria-hidden="true"></i></a></li>
+          <li><a class="menu__link" href="#">Add New Item</i></a></li>
           <li><a class="menu__link" href="#">All Item</a></li>
         </ul>
       </li>
@@ -77,14 +77,39 @@
   <main class="admin__main">
     <h2>Dashboard</h2>
     <div class="dashboard">
-      <div class="dashboard__item">
+      <div class="dashboard__item dashboard__item--full">
+           
         <div class="card">
-        </div>
-      </div>
-      <div class="dashboard__item">
-        <div class="card">
-        </div>
-      </div>
+             <table>
+          <thead><tr>
+          <th>ID</th> 
+          <th>NAME</th> 
+          <th>PRODUCT</th>
+            <th>DESCIPTION</th>
+            <th>PRICE NAME</th>
+            <th>ADDRESS</th>
+            <th>DATE</th>
+            <th>OPERATION</th>
+            </tr></thead>
+          <tbody><tr>         
+            <td>1</td>
+            <td>James</td>
+            <td>Burger</td>
+              <td>Cooked</td>
+              <td>#2000</td>
+              
+              <td>20 Pounds Roads, Lagos</td>
+              <td>24-9-2018</td>
+              <td><button class="button complete">
+              <strong>Accept</strong></button>
+            <button type="button" class="button delete">
+            <strong>Reject</strong>
+            </button></td>
+           </tr>
+          </tbody>
+          </table>
+            </div>
+       
       
       </div>
     </div>

@@ -25,7 +25,7 @@ GET api/v1/item/: User can get a specific item
 GET api/v1/item: User can get all item 
 UPDATE api/v1/item/: Admin can update item
 ```
-### Installing
+### Installing    
 ```
 How To Run clone the repo or download the repo run the cmd : npm install run the command npm run start - to start the app npm run test - to test api implementation npm run cover -to test coverall output
 ```
@@ -36,7 +36,13 @@ How To Run clone the repo or download the repo run the cmd : npm install run the
 * [Sign In](https://techneplus.github.io/Fast-Food-App/UI/sign-in.html) - Sign In Page
 * [Sign Up](https://techneplus.github.io/Fast-Food-App/UI/sign-up.html) - Sign In Page
 * [User Account](https://techneplus.github.io/Fast-Food-App/UI/account.html) - User Account Page
-* [Admin dashborad](https://techneplus.github.io/Fast-Food-App/UI/dashboard.html) - Admin Page
+* [Admin dashboard](https://techneplus.github.io/Fast-Food-App/UI/dashboard.html) - Admin Page
+* [Admin new Order Page](https://techneplus.github.io/Fast-Food-App/UI/admin-new-order.html) - Admin new Order Page
+* [Admin new Item Page](https://techneplus.github.io/Fast-Food-App/UI/admin-new-item.html) - Admin new Item Page
+* [Admin Order History Page](https://techneplus.github.io/Fast-Food-App/UI/admin-order-history.html) - Admin Order History Page
+* [User Processing Order Page](https://techneplus.github.io/Fast-Food-App/UI/processing-order.html) - User Processing Order Page
+* [User Completed Order Page](https://techneplus.github.io/Fast-Food-App/UI/completed-order.html) - User Completed Order Page
+* [User Declined Order Page](https://techneplus.github.io/Fast-Food-App/UI/declined-order.html) - User Declined Order Page
 
 ###Todo Challenge 4
 How To Run clone the repo or download the repo run the cmd : npm install run the command npm run start - to start the app npm run test - to test api implementation npm run cover -to test coverall output

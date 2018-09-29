@@ -7,7 +7,7 @@
     "test": "mocha --require babel-core/register --exit",
     "build": "babel server.js --out-dir build",
     "start": "babel-watch server.js",
-    "coverage": "istanbul cover node_modules/mocha/bin/_mocha test/*.js -- --require babel-register"
+    "coverage": "nyc --reporter html --reporter text npm test"
   },
   "repository": {
     "type": "git",
@@ -42,8 +42,10 @@
     "chai": "^4.2.0",
     "coveralls": "^3.0.2",
     "istanbul": "^1.1.0-alpha.1",
+    "jscover": "^1.0.0",
     "mocha": "^5.2.0",
     "mocha-lcov-reporter": "^1.3.0",
+    "nyc": "^13.0.1",
     "supertest": "^3.3.0"
   }
 }

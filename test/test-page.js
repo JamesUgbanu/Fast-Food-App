@@ -3,7 +3,7 @@ const expect  = require('chai').expect;
 const supertest = require('supertest');
 const app = require('../server');
 
-const api = supertest('http://127.0.0.1:5000');
+const api = supertest('http://127.0.0.1:3000');
 
 it('should return a 200 response', function(done) {
 	api.get('/')

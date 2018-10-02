@@ -30,11 +30,11 @@ const User = {
     try {
       const rows = await db.query(createQuery, values);
       const token = Helper.generateToken(rows[0].id, rows[0].isadmin);
-      return res.status(201).send({ success: 'User Created Successfully', token });
+      return res.status(201).send({ success: "true", message: 'User Created Successfully', token });
     } catch(error) {
 
       if (error.routine === '_bt_check_unique') {
-        return res.status(400).send({ error: 'User with that EMAIL already exist' })
+        return res.status(400).send({ error: "false", message: 'User with that EMAIL already exist' })
       }
       return res.status(400).send(error);
     }

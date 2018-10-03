@@ -33,9 +33,23 @@ const api = supertest('http://127.0.0.1:3000');
             });
         });
 
-        describe("Testing for user route", function() {
+        describe("Testing for user route", () => {
 
-		    it('should be create new user', function(done) {
+        	it('should return some false when values are missing', done => {
+        		api.post('/api/v1/user/register')
+        		.set('Accept', 'application/x-www-form-urlencoded')
+        		.send({
+        			"email": "",
+        		})
+        		.expect(400)
+        		.end((err, res) => {
+        			expect(res.body.success).to.equal("false");
+        			done();
+        		})
+        	})
+
+
+		    it('should create new user', done => {
 			api.post('/api/v1/user/register')
 			.set('Accept', 'application/x-www-form-urlencoded')
 			.send({
@@ -43,13 +57,13 @@ const api = supertest('http://127.0.0.1:3000');
 				'password': "admin"
 			})
 				.expect(201)
-				.end(function(err, res) {
-					expect(res.body).to.have.property("success");
+				.end((err, res) => {
+					expect(res.body.success).to.have.equal("true");
 					done();
 				})
         	});
 
-        	 it('should return true if user is successfully authenticated', function(done) {
+        	 it('should return true if user is successfully authenticated', done => {
 			api.post('/api/v1/user/authenticate')
 			.set('Accept', 'application/x-www-form-urlencoded')
 			.send({
@@ -57,9 +71,18 @@ const api = supertest('http://127.0.0.1:3000');
 				'password': "admin"
 			})
 				.expect(200)
-				.end(function(err, res) {
+				.end((err, res) => {
+					expect(res.body.success).to.equal("true");
+					done();
+				})
+        	});
+
+        	  it('should return true if user is authorised to delete', done => {
+			api.delete('/api/v1/user/6')
+				.expect(401)
+				.end((err, res) => {
 					console.log(res.body)
-					expect(res.body.token).to.not.equal(null);
+					expect(res.body.success).to.equal("false");
 					done();
 				})
         	});

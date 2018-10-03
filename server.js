@@ -25,6 +25,7 @@ app.post('/api/v1/user/authenticate', UserWithDb.authenticateUser);
 app.delete('/api/v1/user/:id', Auth.verifyToken, UserWithDb.delete);
 app.post('/api/v1/user/order', Auth.verifyToken, order.createOrder);
 app.get('/api/v1/user/order', Auth.verifyToken, order.getUserOrder);
+app.get('/api/v1/order/:id', Auth.verifyToken, order.getOrderById);
 app.get('/api/v1/order', Auth.verifyToken, order.getAllOrder);
 app.put('/api/v1/order/:id', Auth.verifyToken, order.updateOrderStatus);
 app.post('/api/v1/item', Auth.verifyToken, ItemWithDb.addItem);

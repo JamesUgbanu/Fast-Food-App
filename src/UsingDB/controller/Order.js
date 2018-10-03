@@ -31,9 +31,9 @@ const Order = {
             console.log(result)
 
       }
-      return res.status(201).send(rows[0]);
+      return res.status(201).send(success: "true", message: rows[0]);
     } catch(error) {
-      return res.status(400).send(error);
+      return res.status(400).send(success: "false", message: 'Query Failed');
     }
   },
 
@@ -41,9 +41,19 @@ const Order = {
     const findOneQuery = `SELECT * FROM orders where user_id = $1`;
     try {
       const rows = await db.query(findOneQuery, [req.user.id]);
-      return res.status(200).send({message: rows});
+      return res.status(200).send({success:"false", message: rows});
     } catch(error) {
-      return res.status(400).send({error: 'Query Failed'});
+      return res.status(400).send({success:"false", message: 'Query Failed'});
+    }
+  },
+
+   async getOrderById(req, res) {
+    const findOneQuery = `SELECT * FROM orders where id = $1`;
+    try {
+      const rows = await db.query(findOneQuery, [req.params.id]);
+      return res.status(200).send({success:"true", message: rows});
+    } catch(error) {
+      return res.status(400).send({success:"false", message: 'Query Failed'});
     }
   },
 
@@ -55,9 +65,9 @@ const Order = {
       //   return res.status(401).send({error: 'Unauthorised Access' });
       // }
       const rows = await db.query(findAllQuery);
-      return res.status(200).send({ sucess: 'Success', message: rows });
+      return res.status(200).send({ success: 'true', message: rows });
   } catch(error) {
-      return res.status(400).send({error: 'Query Failed'});
+      return res.status(400).send({success:"false", message: 'Query Failed'});
     }
   },
 
@@ -66,20 +76,20 @@ const Order = {
    
     try {
       if(req.user.admin) {
-        return res.status(401).send({error: 'Unauthorised Access' })
+        return res.status(401).send({success: "false",  message:'Unauthorised Access', error })
       }
        
         if (!req.body.item_id || !req.body.order_status) {
-            return res.status(400).send({error: 'All fields are required'});
+            return res.status(400).send({success: "false", message: 'All fields are required'});
           }
 
       const rows = await db.query(findOneQuery, [req.body.order_status, parseInt(req.params.id), req.body.item_id]);
         if(rows.length == 0) {
-          return res.status(301).send({error: 'Not Found'});
+          return res.status(301).send({success: "false", message: 'Not Found'});
         }
-      return res.status(200).send({ sucess: 'Success', message: rows });
+      return res.status(200).send({ success: 'Success', message: rows });
   } catch(error) {
-      return res.status(400).send({error: 'Query Failed'});
+      return res.status(400).send({success: "false", message: 'Query Failed'});
     }
   }
 

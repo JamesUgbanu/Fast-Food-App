@@ -20,9 +20,9 @@ const Order = {
     try {
       const rows = await db.query(createQuery, values);
       
-      return res.status(201).send({success: 'Item Added Sucessfully', message: rows[0]});
+      return res.status(201).send({success: "true", message:'Item Added Successfully'});
     } catch(error) {
-      return res.status(400).send(error);
+      return res.status(400).send(success: "false", message: 'Query Failed');
     }
   },
 
@@ -30,10 +30,10 @@ const Order = {
     const findOneQuery = `SELECT * FROM items where id = $1`;
     try {
       const rows = await db.query(findOneQuery, [parseInt(req.params.id)]);
-      return res.status(200).send({success: 'Success', message: rows[0]});
+      return res.status(200).send({success: 'true', message: rows[0]});
   		
     } catch(error) {
-      return res.status(400).send({error: 'Query Failed'});
+      return res.status(400).send({success: 'false', message: 'Query Failed'});
     }
   },
 
@@ -43,10 +43,10 @@ const Order = {
     try {
     
       const rows = await db.query(findAllQuery);
-      return res.status(200).send({ sucess: 'Success', message: rows });
+      return res.status(200).send({ success: 'true', message: rows });
  
   } catch(error) {
-      return res.status(400).send({error: 'Query Failed'});
+      return res.status(400).send({success: 'false', message: 'Query Failed'});
     }
   },
 
@@ -58,17 +58,17 @@ const Order = {
 
       if(!req.user.admin) {
 
-      		return res.status(401).send({error: 'Unauthorised Access' });
+      		return res.status(401).send({success: "false", message: 'Unauthorised Access' });
       }
 
       if (!req.body.name && !req.body.description && !req.body.price) {
-            return res.status(400).send({error: 'Atleast a field is required'});
+            return res.status(400).send({success: "false", message: 'Atleast a field is required'});
     	 }
     	 	
     	 const rows = await db.query(findOneQuery, [parseInt(req.params.id)]);
 
      	if(!rows[0]) {
-          return res.status(404).send({error: 'Not Found'});
+          return res.status(404).send({success: "false", message: 'Not Found'});
         }
 
        	const updateOneQuery = `UPDATE items SET 
@@ -89,11 +89,11 @@ const Order = {
       	const UpdateRows = await db.query(updateOneQuery, values);
 
         
-      return res.status(200).send({ sucess: 'Success', message: UpdateRows });
+      return res.status(200).send({ success: 'true', message: UpdateRows });
    
   } catch(error) {
   		 
-      return res.status(400).send({error: 'Query Failed'});
+      return res.status(400).send({success: "false", message: 'Query Failed'});
     }
   }
 

@@ -39,5 +39,8 @@ app.get('/', (req, res) => {
 });
 
 
+app.get("*", (req,res) => {
+  res.status(404).send({success: "false", message: "EndPoint does not exist"});
+});
 const PORT = app.listen(process.env.PORT || 5000)
 console.log('app running on port 5000');

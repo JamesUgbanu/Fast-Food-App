@@ -21,7 +21,7 @@ const User = {
       returning *`;
 
     const values = [
-      Helper.sanitizeInput(req.body.email),
+      req.body.email,
       hashPassword,
       moment(new Date()),
       moment(new Date())
@@ -49,7 +49,7 @@ const User = {
     }
     const text = 'SELECT * FROM users WHERE email = $1';
     try {
-      const rows = await db.query(text, [Helper.sanitizeInput(req.body.email)]);
+      const rows = await db.query(text, [req.body.email]);
 
       if (!rows[0]) {
         return res.status(400).send({success: "false", message: 'The credentials you provided is incorrect'});
@@ -65,7 +65,7 @@ const User = {
   },
 
   async delete(req, res) {
-    
+
       if(req.user.admin) {
         return res.status(401).send({success: "false", message: 'Unauthorised Access' })
       }

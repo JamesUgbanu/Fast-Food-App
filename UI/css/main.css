@@ -1,7 +1,5 @@
  html {
       box-sizing: border-box;
-      background:url('../images/banner.jpg') center no-repeat;
-      background-size:cover;
       font-family: Futura,"Trebuchet MS",Arial,sans-serif,
     }
     *, *:before, *:after {box-sizing: inherit; }
@@ -22,22 +20,31 @@ a {
     }
 
   .container__content {
+     background:url('../images/banner.jpg') center no-repeat;
+      background-size:cover;
       display: grid;
+      height: 70vh;
   }
 
    .wrapper-left {
-  grid-area: wrapper-left;
-   background: rgba(84,1,1, 0.8);
+   grid-area: wrapper-left;
+    }
+    /* .content {
+      padding: 200px;
+    background: rgba(84,1,1, 0.8);
     color: #fff;
     box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
     margin: 20px;
-    min-height: 100vh;
-    }
+    }*/
 
     .wrapper-right {
     grid-area: wrapper-right;
     }
 
+    .wrapper-full {
+      grid-area: wrapper-full;
+
+    }
 
     @media (min-width: 1025px) {
   .container__content {
@@ -497,10 +504,10 @@ td {
 .container {
   max-width: 75em;
   width: 95%;
+  height: 50vh;
   margin: 40px auto;  
   overflow: hidden;
   position: relative;
-  
   border-radius: 0.6em;
   background: #ecf0f1;
   box-shadow: 0 0.5em 0 rgba(138, 148, 152, 0.2);
@@ -697,9 +704,12 @@ td {
 
 
 /** Food menus **/
+.row {
+  margin: 20px 0;
+}
 .column {
     float: left;
-    width: 33.33%;
+    width: 25%;
 }
 
 /* Clear floats after the columns */

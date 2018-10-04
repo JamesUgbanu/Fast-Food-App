@@ -7,11 +7,11 @@ const User = {
   async createUser(req, res) {
 
     if (!req.body.email || !req.body.password) {
-      return res.status(400).send({error: 'Some values are missing'});
+      return res.status(400).send({success: "false", message: 'Some values are missing'});
     }
 
     if (!Helper.isValidEmail(req.body.email)) {
-      return res.status(400).send({ error: 'Please enter a valid email address' });
+      return res.status(400).send({ success: "false", error: 'Please enter a valid email address' });
     }
     const hashPassword = Helper.hashPassword(req.body.password);
 
@@ -21,7 +21,7 @@ const User = {
       returning *`;
 
     const values = [
-      req.body.email,
+      Helper.sanitizeInput(req.body.email),
       hashPassword,
       moment(new Date()),
       moment(new Date())
@@ -34,51 +34,58 @@ const User = {
     } catch(error) {
 
       if (error.routine === '_bt_check_unique') {
-        return res.status(400).send({ error: "false", message: 'User with that EMAIL already exist' })
+        return res.status(400).send({ success: "false", message: 'User with that EMAIL already exist' })
       }
-      return res.status(400).send(error);
+      return res.status(400).send({success: "false", message: "Query Failed"});
     }
   },
 
   async authenticateUser(req, res) {
     if (!req.body.email || !req.body.password) {
-      return res.status(400).send({error: 'Some values are missing'});
+      return res.status(400).send({success: "false", message: 'Some values are missing'});
     }
     if (!Helper.isValidEmail(req.body.email)) {
-      return res.status(400).send({ error: 'Please enter a valid email address' });
+      return res.status(400).send({success: "false", message: 'Please enter a valid email address' });
     }
     const text = 'SELECT * FROM users WHERE email = $1';
     try {
-      const rows = await db.query(text, [req.body.email]);
+      const rows = await db.query(text, [Helper.sanitizeInput(req.body.email)]);
 
       if (!rows[0]) {
-        return res.status(400).send({error: 'The credentials you provided is incorrect'});
+        return res.status(400).send({success: "false", message: 'The credentials you provided is incorrect'});
       }
       if(!Helper.comparePassword(rows[0].password, req.body.password)) {
-        return res.status(400).send({ error: 'The credentials you provided is incorrect' });
+        return res.status(400).send({success: "false", message: 'The credentials you provided is incorrect' });
       }
-      	console.log(rows[0].isadmin)
       const token = Helper.generateToken(rows[0].id, rows[0].isadmin);
-      return res.status(200).send({ success: 'Successfully authenticated', token});
+      return res.status(200).send({ success: "true", message: 'Successfully authenticated', token});
     } catch(error) {
-      return res.status(400).send({error: error})
+      return res.status(400).send({success: "false", message:"Query Failed"})
     }
   },
 
   async delete(req, res) {
+    
+      if(req.user.admin) {
+        return res.status(401).send({success: "false", message: 'Unauthorised Access' })
+      }
+
+
+       if(!Helper.isAnInteger(req.params.id)) {
+        return res.status(400).send({success: "false", message:"Your ID should be a number"})
+      }
+
     const deleteQuery = 'DELETE FROM users WHERE id=$1 returning *';
     try {
-    	if(req.user.admin) {
-        return res.status(401).send({error: 'Unauthorised Access' })
-      }
-    		const rows = await db.query(deleteQuery, [parseInt(req.params.id)]);
+    	
+    		const rows = await db.query(deleteQuery, [req.params.id]);
       if(!rows[0]) {
-        return res.status(404).send({success: 'user not found'});
+        return res.status(404).send({success: "false", message:'user not found'});
       }
-      return res.status(200).send({ success: 'User Successfully deleted' });
+      return res.status(200).send({ success: "true", message: 'User Successfully deleted' });
       
     } catch(error) {
-      return res.status(400).send(error);
+      return res.status(400).send({success: "false", message: "Query Failed"});
     }
   }
 }

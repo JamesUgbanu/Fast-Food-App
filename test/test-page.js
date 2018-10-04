@@ -13,7 +13,7 @@ const api = supertest('http://127.0.0.1:3000');
 			.expect(200);
 			done()
 		})
-		describe("Checking out Helper function", function () {
+		describe("Checking out Helper function", () => {
 
             it("should not return null", () => {
                 expect(Helper.hashPassword("admin")).to.not.equal(null);
@@ -31,11 +31,18 @@ const api = supertest('http://127.0.0.1:3000');
              it("should return true if a token was generated", () => {
                 expect(Helper.generateToken(2, true)).to.not.equal(null);
             });
+
+             it("should return true if it is an integer", () => {
+                expect(Helper.isAnInteger(2)).to.equal(true);
+            });
+             it("should remove all special character ", () => {
+                expect(Helper.sanitizeInput("the/s*e")).to.equal("these");
+            });
         });
 
-        describe("Testing for user route", function() {
+        describe("Testing for user route", () => {
 
-		    it('should be create new user', function(done) {
+		    it('should be create new user', done => {
 			api.post('/api/v1/user/register')
 			.set('Accept', 'application/x-www-form-urlencoded')
 			.send({
@@ -43,29 +50,31 @@ const api = supertest('http://127.0.0.1:3000');
 				'password': "admin"
 			})
 				.expect(201)
-				.end(function(err, res) {
+				.end((err, res) => {
 					expect(res.body).to.have.property("success");
 					done();
 				})
         	});
 
-        	 it('should return true if user is successfully authenticated', function(done) {
+        	 it('should return true if user is successfully authenticated', done => {
 			api.post('/api/v1/user/authenticate')
 			.set('Accept', 'application/x-www-form-urlencoded')
 			.send({
-				'email': "admin2@gmail.com",
+				'email': "admin5@gmail.com",
 				'password': "admin"
 			})
 				.expect(200)
-				.end(function(err, res) {
-					console.log(res.body)
+				.end((err, res) => {
 					expect(res.body.token).to.not.equal(null);
 					done();
 				})
         	});
 
 		});
-// it('should return a 200 response', function(done) {
+
+
+		
+// it('should return a 200 response', (done) {
 // 	api.get('/api/v1/item')
 // 	.set('Accept', 'application/json')
 // 	.expect(200, done);

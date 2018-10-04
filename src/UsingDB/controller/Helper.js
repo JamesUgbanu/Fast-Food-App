@@ -15,7 +15,12 @@ const Helper = {
   isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
   },
-
+  isAnInteger(id) {
+    return /^\d+$/.test(id);
+  },
+  sanitizeInput(input) {
+    return input.replace(/[^\w\s]/gi, '')
+  },
   generateToken(id, admin) {
     const token = jwt.sign({
       userId: id,

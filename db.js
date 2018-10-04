@@ -2,7 +2,6 @@
 const pgp = require('pg-promise')()
 const dotenv = require('dotenv');
 
-
 dotenv.config();
 
 const db = pgp(process.env.DATABASE_URL)
@@ -35,6 +34,7 @@ const createOrderItemTable = () => {
         item_id integer NOT NULL,
         order_id integer NOT NULL,
         order_status integer NOT NULL,
+        quantity integer,
         FOREIGN KEY (item_id) REFERENCES items (id)  ON DELETE NO ACTION,
         FOREIGN KEY (order_id) REFERENCES orders (id)  ON DELETE NO ACTION,
         FOREIGN KEY (order_status) REFERENCES order_status (id) ON DELETE NO ACTION

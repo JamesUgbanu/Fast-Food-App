@@ -21,7 +21,7 @@ const User = {
       returning *`;
 
     const values = [
-      Helper.sanitizeInput(req.body.email),
+      req.body.email,
       hashPassword,
       moment(new Date()),
       moment(new Date())
@@ -65,7 +65,7 @@ const User = {
   },
 
   async delete(req, res) {
-    
+
       if(req.user.admin) {
         return res.status(401).send({success: "false", message: 'Unauthorised Access' })
       }

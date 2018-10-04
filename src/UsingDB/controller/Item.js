@@ -61,9 +61,10 @@ const Item = {
           return res.status(404).send({success: 'false', message: "Not Found"});
       }
 
-      return res.status(200).send({ sucess: 'Success', message: rows });
+      return res.status(200).send({ success: 'true', message: rows });
  
   } catch(error) {
+    console.log(error)
       return res.status(400).send({sucess: "false", message: 'Query Failed'});
     }
   },

@@ -26,16 +26,21 @@ a {
       height: 70vh;
   }
 
-   .wrapper-left {
-   grid-area: wrapper-left;
+   .wrapper-center {
+    grid-area: wrapper-left;
     }
-    /* .content {
-      padding: 200px;
-    background: rgba(84,1,1, 0.8);
+     .content__box {
+      padding: 2em;
+      position: relative;
+      top: 8em;
+    background-color: rgba(84,1,1, 0.8);
     color: #fff;
     box-shadow: 0 0 0 10px rgba(0,0,0,0.1);
-    margin: 20px;
-    }*/
+    }
+    .content__box h2{
+      font-size: 3em;
+      font-weight: 600;
+    }
 
     .wrapper-right {
     grid-area: wrapper-right;
@@ -43,15 +48,18 @@ a {
 
     .wrapper-full {
       grid-area: wrapper-full;
+    }
 
+    .wrapper-center {
+      grid-area: wrapper-center;
     }
 
     @media (min-width: 1025px) {
   .container__content {
     justify-content: space-between;
-    grid-template-columns:70% 30%;
+    grid-template-columns:30% 40% 30%;
     grid-template-rows: auto;
-    grid-template-areas: "wrapper-left wrapper-right";
+    grid-template-areas: "wrapper-left wrapper-center wrapper-right";
   }
 }
 
@@ -71,11 +79,15 @@ a {
 .header-center {
   grid-area: header-center;
 }
+.header-right {
+  grid-area: header-right;
+}
 
 .header-left {
   grid-area: header-left;
   margin-left: 5%;
 }
+
 .grid-navigation {
   margin-top: 25px;
 }
@@ -114,6 +126,12 @@ a {
 
 
 /** Login and Sign Up Form **/
+.content__reg {
+background:url('../images/banner.jpg') center no-repeat;
+  background-size:cover;
+  padding-top: 20px;
+  height: 90vh;
+}
 
 .login-card {
   padding: 40px;
@@ -184,27 +202,28 @@ textarea {
   border: 0px;
   color: #fff;
   text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #40d217;
+  background-color: #AD0909;
 }
 
 .login-submit:hover {
   border: 0px;
   text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #40d217;
+  background-color: #AD0909;
 }
 
 .login-card a {
   text-decoration: none;
-  color: #666;
+  color: #fff;
   font-weight: 400;
+  font-size: 1.7em;
   text-align: center;
   display: inline-block;
-  opacity: 0.6;
+  opacity: 1;
   transition: opacity ease 0.5s;
 }
 
 .login-card a:hover {
-  opacity: 1;
+  opacity: 0.6;
 }
 
 .login-help {
@@ -502,12 +521,13 @@ td {
 
 
 .container {
-  max-width: 75em;
+  max-width: 30em;
   width: 95%;
-  height: 50vh;
-  margin: 40px auto;  
+  height: auto;
+  margin: 15px auto;  
   overflow: hidden;
-  position: relative;
+  position: absolute;
+  right: 1em;
   border-radius: 0.6em;
   background: #ecf0f1;
   box-shadow: 0 0.5em 0 rgba(138, 148, 152, 0.2);
@@ -528,6 +548,10 @@ td {
   overflow: hidden;
   clear: both;
   margin-bottom: 1.8em;
+  color: #000;
+}
+.toggle-cart {
+  display: none;
 }
 
 

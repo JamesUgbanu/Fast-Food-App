@@ -74,7 +74,7 @@ const Order = {
 
   async getOrderById(req, res) {
 
-    if(req.user.admin) {
+    if(!req.user.admin) {
         return res.status(401).send({error: 'Unauthorised Access' });
       }
 
@@ -102,7 +102,7 @@ const Order = {
 
    async getAllOrder(req, res) {
 
-    if(req.user.admin) {
+    if(!req.user.admin) {
         return res.status(401).send({success: "false", message: 'Unauthorised Access' });
       }
 
@@ -125,7 +125,7 @@ const Order = {
 
   async updateOrderStatus(req, res) {
 
-           if(req.user.admin) {
+           if(!req.user.admin) {
         return res.status(401).send({success: 'false', message: 'Unauthorised Access' })
       }
        

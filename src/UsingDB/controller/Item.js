@@ -5,6 +5,10 @@ import Helper from './Helper';
 const Item = {
 
   async addItem(req, res) {
+
+    if(!req.user.admin) {
+        return res.status(401).send({success: "false", message: 'Unauthorised Access' })
+      }
       
     const createQuery = `INSERT INTO
       items(name, description, price, created_date, modified_date)

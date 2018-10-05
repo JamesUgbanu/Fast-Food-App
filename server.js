@@ -10,6 +10,7 @@ import OrderWithDB from './src/UsingDB/controller/Order';
 import UserWithDb from './src/UsingDB/controller/Users';
 import ItemWithDb from './src/UsingDB/controller/Item';
 import Auth from './src/UsingDB/middleware/Auth';
+import Validator from './src/UsingDB/middleware/Validator';
 
 const order = process.env.TYPE === 'db' ? OrderWithDB : OrderWithJsObject;
 
@@ -28,7 +29,7 @@ app.get('/api/v1/user/orders', Auth.verifyToken, order.getUserOrder);
 app.get('/api/v1/orders/:id', Auth.verifyToken, order.getOrderById);
 app.get('/api/v1/orders', Auth.verifyToken, order.getAllOrder);
 app.put('/api/v1/orders/:id', Auth.verifyToken, order.updateOrderStatus);
-app.post('/api/v1/items', Auth.verifyToken, ItemWithDb.addItem);
+app.post('/api/v1/items', Validator.itemValidator, Auth.verifyToken, ItemWithDb.addItem);
 app.get('/api/v1/items/:id', ItemWithDb.getItemById);
 app.get('/api/v1/items', ItemWithDb.getAllItem);
 app.put('/api/v1/items/:id', Auth.verifyToken, ItemWithDb.updateItemById);

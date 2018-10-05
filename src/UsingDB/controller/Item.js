@@ -27,6 +27,7 @@ const Item = {
       
       return res.status(201).send({success: 'Item Added Sucessfully', message: rows[0]});
     } catch(error) {
+      console.log(error)
       return res.status(400).send({success:"false", message: "Query Failed"});
     }
   },

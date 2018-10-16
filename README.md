@@ -12,17 +12,18 @@ User can create an account User can login to their account User can order for fo
 
 ### Endpoints Features (API) 
 ```
-POST api/v1/user/register: Register a new user
-POST api/v1/user/authenticate: Authenticate user 
-DELETE api/v1/user/me: Admin can delete user 
-POST api/v1/user/order: user can place a new order 
-GET api/v1/user/order: user can get user order 
-GET api/v1/order: Admin can get all order 
-UPDATE api/v1/order/: Admin can update status 
+POST /api/v1/user/register: Register a new user
+POST /api/v1/user/authenticate: Authenticate user 
+DELETE /api/v1/user/:id: Admin can delete a user
+POST /api/v1/user/orders: user can place a new order 
+GET /api/v1/user/orders: user can get specific order 
+GET /api/v1/orders/:id: Admin can get a specific order
+GET /api/v1/orders: Admin can get all order 
+UPDATE /api/v1/orders/:id: Admin can update order status 
 POST api/v1/item: Admin can add new item 
-GET api/v1/item/: User can get a specific item 
-GET api/v1/item: User can get all item 
-UPDATE api/v1/item/: Admin can update item
+GET /api/v1/items/:id: User can get a specific item 
+GET /api/v1/items: User can get all item 
+UPDATE api/v1/items/:id: Admin can update item
 ```
 ### Installing    
 ```

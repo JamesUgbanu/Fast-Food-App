@@ -3,43 +3,49 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Order History</title>
+  <title>ADMIN</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Spectral+SC" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-   <link rel="stylesheet" href="css/navigation.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
   <link rel="stylesheet" href="css/main.css">
 </head>
 
 <body>
-<div class="admin">
-  <header class="admin__header">
-    <a href="#" class="logo">
-      <h1>Fast Food Fast Admin</h1>
-    </a>
-    <div class="toolbar">
-      <button class="btn btn--primary">Messages</button>
-      <a href="#" class="logout">
-        Log Out
-      </a>
+  <div class="header-grid">
+    <div class="header-left">
+       <h2>ADMIN DASHBOARD</h2>
     </div>
-  </header>
-  <nav class="admin__nav">
-    <ul class="menu">
+    <div class="header-center">
+      <ul class="grid-navigation">
+       <a href="index.html">
+              <li>HOME</li>
+            </a>
+            <a href="sign-in.html">
+              <li>SIGN IN</li>
+            </a>
+            <a href="sign-up.html">
+              <li>SIGN UP</li>
+            </a>
+      </ul>
+    </div>
+  </div>
+  <div class="user-dashboard">
+<nav class="user__nav">
+   <ul class="menu">
       <li class="menu__item">
-        <a class="menu__link" href="#">Dashboard</a>
+        <a class="menu__link" href="admin-dashboard.html">Dashboard</a>
       </li>
       <li class="menu__item">
-        <a class="menu__link" href="#">Orders</a>
+        <a class="menu__link" href="#">Orders<i style="float: right;" class="fa fa-sort-down" aria-hidden="true"></i></a>
          <ul class="menu sub-menu">
-          <li><a class="menu__link" href="order.html">New Order</a></li>
-          <li><a class="menu__link" href="#">Order History</a></li>
+          <li><a class="menu__link" href="admin-new-order.html">New Order</a></li>
+          <li><a class="menu__link" href="admin-order-history.html">Order History</a>
+          </li>
         </ul>
       </li>
       <li class="menu__item">
-        <a class="menu__link" href="#">Items</a>
+        <a class="menu__link" href="#">Items<i style="float: right;" class="fa fa-sort-down" aria-hidden="true"></i></a>
          <ul class="menu sub-menu">
-          <li><a class="menu__link" href="#">Add New Item</a></li>
+          <li><a class="menu__link" href="admin-new-item.html">Add New Item</i></a></li>
           <li><a class="menu__link" href="#">All Item</a></li>
         </ul>
       </li>
@@ -51,7 +57,19 @@
       <div class="dashboard__item dashboard__item--full">
            
         <div class="card">
-             <table>
+            <div class="tabs-container">
+    
+              <input type="radio" name="tabs" id="a"  class="tab-a" checked>
+              <label for="a" class="tab">Processing</label>
+
+              <input type="radio" name="tabs" id="b" class="tab-b">
+              <label for="b" class="tab">Completed</label>
+
+              <input type="radio" name="tabs" id="c" class="tab-c">
+              <label for="c" class="tab">Declined</label>
+    
+  <div class="content content-a">
+     <table>
           <thead><tr>
           <th>ID</th> 
           <th>NAME</th> 
@@ -71,26 +89,86 @@
               
               <td>20 Pounds Roads, Lagos</td>
               <td>24-9-2018</td>
-              <td> <button class="btn btn--primary">Accept</button>
-             <button class="btn btn--primary">Reject</button>
+              <td><button class="button complete">
+              <strong>Accept</strong></button>
+            <button type="button" class="button delete">
             <strong>Reject</strong>
             </button></td>
            </tr>
           </tbody>
           </table>
+  </div>
+  <div class="content content-b">
+     <table>
+          <thead><tr>
+          <th>ID</th> 
+          <th>NAME</th> 
+          <th>PRODUCT</th>
+            <th>DESCIPTION</th>
+            <th>PRICE NAME</th>
+            <th>ADDRESS</th>
+            <th>DATE</th>
+            <th>OPERATION</th>
+            </tr></thead>
+          <tbody><tr>         
+            <td>1</td>
+            <td>James</td>
+            <td>Burger</td>
+              <td>Cooked</td>
+              <td>#2000</td>
+              
+              <td>20 Pounds Roads, Lekki</td>
+              <td>24-9-2018</td>
+              <td><button class="button complete">
+              <strong>Delete</strong></button>
+            </td>
+           </tr>
+          </tbody>
+          </table>
+   
+  </div>
+  <div class="content content-c">
+     <table>
+          <thead><tr>
+          <th>ID</th> 
+          <th>NAME</th> 
+          <th>PRODUCT</th>
+            <th>DESCIPTION</th>
+            <th>PRICE NAME</th>
+            <th>ADDRESS</th>
+            <th>DATE</th>
+            <th>OPERATION</th>
+            </tr></thead>
+          <tbody><tr>         
+            <td>1</td>
+            <td>James</td>
+            <td>Burger</td>
+              <td>Cooked</td>
+              <td>#2000</td>
+              
+              <td>20 Pounds Roads, Ababvdhbfdnbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb</td>
+              <td>24-9-2018</td>
+              <td><button class="button complete">
+              <strong>Delete</strong></button>
+            </td>
+           </tr>
+          </tbody>
+          </table>
+   
+  </div>
+</div>
+
+
             </div>
        
       
       </div>
     </div>
   </main>
-  <footer class="admin__footer">
-    <span>
-      &copy; 2018 Fast Food Fast
-    </span>
-  </footer>
 </div>
-
+    <div class="footer">
+      <p>2018</p>
+    </div>
 </body>
 
 </html>

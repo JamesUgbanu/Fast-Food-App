@@ -5,22 +5,16 @@ import 'babel-polyfill';
 const app = express()
 import bodyParser from "body-parser";
 app.use(bodyParser.urlencoded({extended: true}));
-//import OrderWithJsObject from './src/usingJSObject/controllers/Orders';
+
 import OrderWithDB from './src/UsingDB/controller/Order';
 import UserWithDb from './src/UsingDB/controller/Users';
 import ItemWithDb from './src/UsingDB/controller/Item';
 import Auth from './src/UsingDB/middleware/Auth';
 import Validator from './src/UsingDB/middleware/Validator';
-
-const order = process.env.TYPE === 'db' ? OrderWithDB : OrderWithJsObject;
+const order = OrderWithDB;
 
 app.use(express.json())
 
-// app.post('/api/v1/orders', order.createOrder);
-// app.get('/api/v1/orders', order.getAllOrder);
-// app.get('/api/v1/orders/:id', order.getOrderById);
-// app.put('/api/v1/orders/:id', order.updateOrderStatus);
-// app.delete('/api/v1/orders/:id', order.deleteOrder);
 app.post('/api/v1/user/register', UserWithDb.createUser);
 app.post('/api/v1/user/authenticate', UserWithDb.authenticateUser);
 app.delete('/api/v1/user/:id', Auth.verifyToken, UserWithDb.delete);

@@ -33,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.get("*", (req,res) => {
+app.all("*", (req,res) => {
   res.status(404).send({success: "false", message: "EndPoint does not exist"});
 });
 const PORTS = app.listen(process.env.PORT)

@@ -26,7 +26,7 @@ const Helper = {
 			userId: id,
 			isAdmin: admin
 		},
-		process.env.SECRET, { expiresIn: "7d" }
+		process.env.SECRET, { expiresIn: "24h" }
 		)
 		return token
 	}

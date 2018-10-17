@@ -58,9 +58,9 @@ const User = {
         return res.status(400).send({success: "false", message: 'The credentials you provided is incorrect' });
       }
       const token = Helper.generateToken(rows[0].id, rows[0].isadmin);
+ 
       return res.status(200).send({ success: "true", message: 'Successfully authenticated', token});
     } catch(error) {
-       console.log(error)
       return res.status(400).send({success: "false", message:"Query Failed"})
     }
   },

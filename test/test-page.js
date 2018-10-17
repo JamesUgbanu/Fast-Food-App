@@ -14,21 +14,21 @@ const api = supertest(`localhost:${process.env.PORT}`);
         describe("Testing for user route", () => {
 
         		let user = {
-			        		'email': "admin35@gmail.com",
+			        		'email': "admin5@gmail.com",
 							'password': "admin"
         				}
 
-        	it('should return true if a new user is successfully created', done => {
-        		api.post('/api/v1/user/register')
-        			.set('Accept', 'application/x-www-form-urlencoded')
-        			.send(user)
-        			.expect(201)
-        			.end((err, res) => {
-        				expect(res.body.success).to.equal('true');
-        				expect(res.body.token).to.not.equal(null);
-        				done();
-        			})
-        	})
+        	// it('should return true if a new user is successfully created', done => {
+        	// 	api.post('/api/v1/user/register')
+        	// 		.set('Accept', 'application/x-www-form-urlencoded')
+        	// 		.send(user)
+        	// 		.expect(201)
+        	// 		.end((err, res) => {
+        	// 			expect(res.body.success).to.equal('true');
+        	// 			expect(res.body.token).to.not.equal(null);
+        	// 			done();
+        	// 		})
+        	// })
 
         	 it('should return true if user is successfully authenticated', done => {
 			api.post('/api/v1/user/authenticate')

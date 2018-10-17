@@ -14,7 +14,7 @@ const api = supertest(`localhost:${process.env.PORT}`);
         describe("Testing for user route", () => {
 
         		let user = {
-			        		'email': "admin34@gmail.com",
+			        		'email': "admin35@gmail.com",
 							'password': "admin"
         				}
 

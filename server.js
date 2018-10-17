@@ -2,17 +2,16 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import 'babel-polyfill';
-const app = express()
 import bodyParser from "body-parser";
-app.use(bodyParser.urlencoded({extended: true}));
-
 import OrderWithDB from './src/UsingDB/controller/Order';
 import UserWithDb from './src/UsingDB/controller/Users';
 import ItemWithDb from './src/UsingDB/controller/Item';
 import Auth from './src/UsingDB/middleware/Auth';
 import Validator from './src/UsingDB/middleware/Validator';
-const order = OrderWithDB;
 
+const app = express()
+const order = OrderWithDB;
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.json())
 
 app.post('/api/v1/user/register', UserWithDb.createUser);

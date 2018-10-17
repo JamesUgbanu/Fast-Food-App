@@ -40,37 +40,35 @@ const api = supertest('http://127.0.0.1:3000');
             });
         });
 
-  //       describe("Testing for user route", () => {
+        describe("Testing for user route", () => {
 
-		//     it('should be create new user', done => {
-		// 	api.post('/api/v1/user/register')
-		// 	.set('Accept', 'application/x-www-form-urlencoded')
-		// 	.send({
-		// 		'email': "admin5@gmail.com",
-		// 		'password': "admin"
-		// 	})
-		// 		.expect(201)
-		// 		.end((err, res) => {
-		// 			expect(res.body).to.have.property("success");
-		// 			done();
-		// 		})
-  //       	});
+		    it('should be create new user', done => {
+			api.post('/api/v1/user/register')
+			.send({
+				'email': "admin30@gmail.com",
+				'password': "admin"
+			})
+				.expect(201)
+				.end((err, res) => {
+					expect(res.body).to.have.property("success");
+					done();
+				})
+        	});
 
-  //       	 it('should return true if user is successfully authenticated', done => {
-		// 	api.post('/api/v1/user/authenticate')
-		// 	.set('Accept', 'application/x-www-form-urlencoded')
-		// 	.send({
-		// 		'email': "admin5@gmail.com",
-		// 		'password': "admin"
-		// 	})
-		// 		.expect(200)
-		// 		.end((err, res) => {
-		// 			expect(res.body.token).to.not.equal(null);
-		// 			done();
-		// 		})
-  //       	});
+        	 it('should return true if user is successfully authenticated', done => {
+			api.post('/api/v1/user/authenticate')
+			.send({
+				'email': "admin5@gmail.com",
+				'password': "admin"
+			})
+				.expect(200)
+				.end((err, res) => {
+					expect(res.body.token).to.not.equal(null);
+					done();
+				})
+        	});
 
-		// });
+		});
 
 
 		

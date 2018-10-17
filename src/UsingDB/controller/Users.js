@@ -32,8 +32,6 @@ const User = {
       const token = Helper.generateToken(rows[0].id, rows[0].isadmin);
       return res.status(201).send({ success: "true", message: 'User Created Successfully', token });
     } catch(error) {
-      console.log(error)
-
       if (error.routine === '_bt_check_unique') {
         return res.status(400).send({ success: "false", message: 'User with that EMAIL already exist' })
       }
@@ -42,6 +40,7 @@ const User = {
   },
 
   async authenticateUser(req, res) {
+   
     if (!req.body.email || !req.body.password) {
       return res.status(400).send({success: "false", message: 'Some values are missing'});
     }
@@ -61,6 +60,7 @@ const User = {
       const token = Helper.generateToken(rows[0].id, rows[0].isadmin);
       return res.status(200).send({ success: "true", message: 'Successfully authenticated', token});
     } catch(error) {
+       console.log(error)
       return res.status(400).send({success: "false", message:"Query Failed"})
     }
   },

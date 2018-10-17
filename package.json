@@ -4,7 +4,7 @@
   "description": "Fast Food Fast is a delivery service app for a restaurant",
   "main": "server.js",
   "scripts": {
-    "test": "mocha --require babel-core/register --exit",
+    "test": "mocha --timeout 5000 --require babel-core/register --exit",
     "build": "babel server.js --out-dir build",
     "start": "babel-watch server.js",
     "coverage": "nyc --reporter html --reporter text npm test"

@@ -36,7 +36,6 @@ const api = supertest(`localhost:${process.env.PORT}`);
 			.send(user)
 				.expect(200)
 				.end((err, res) => {
-					console.log(res.body)
 					expect(res.body.success).to.equal('true');
 					expect(res.body.token).to.not.equal(null);
 					done();
